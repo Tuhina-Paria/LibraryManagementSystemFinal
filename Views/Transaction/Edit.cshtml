@@ -1,0 +1,197 @@
+﻿@model LibraryManagementSystem.Models.BookTransaction
+
+@{
+    ViewData["Title"] = "Edit Transaction";
+}
+
+<div class="edit-transaction-page">
+
+    <div class="edit-page-heading">
+        <div>
+            <h3>Edit Transaction</h3>
+            <p>Modify the transaction information below.</p>
+        </div>
+
+        <a asp-action="Index" class="edit-back-link">
+            ← Back to Transactions
+        </a>
+    </div>
+
+    <form asp-action="Edit" method="post">
+
+        <input type="hidden" asp-for="TransactionId" />
+
+        <div asp-validation-summary="All"
+             class="validation-summary"
+             role="alert">
+        </div>
+
+        <div class="edit-transaction-card">
+
+            <div class="edit-card-heading">
+                <div>
+                    <h5>Transaction Details</h5>
+                    <p>Update the required information</p>
+                </div>
+
+                <span class="edit-card-icon">✎</span>
+            </div>
+
+            <div class="edit-card-body">
+
+                <div class="edit-form-column">
+
+                    <section class="edit-form-section">
+                        <h6>Reference Information</h6>
+
+                        <div class="mb-3">
+                            <label asp-for="ReferenceNo" class="form-label">
+                                Reference Number
+                            </label>
+
+                            <input asp-for="ReferenceNo"
+                                   class="form-control modern-input"
+                                   readonly />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ReferenceDate" class="form-label">
+                                Reference Date
+                            </label>
+
+                            <input asp-for="ReferenceDate"
+                                   type="date"
+                                   class="form-control modern-input"
+                                   readonly />
+                        </div>
+                    </section>
+
+                    <section class="edit-form-section">
+                        <h6>Student Information</h6>
+
+                        <div class="mb-3">
+                            <label asp-for="StudentId" class="form-label">
+                                Select Student
+                            </label>
+
+                            <select asp-for="StudentId"
+                                    asp-items="ViewBag.Students"
+                                    class="form-select modern-input"
+                                    required>
+                                <option value="">Select Student</option>
+                            </select>
+                        </div>
+                    </section>
+
+                </div>
+
+                <div class="edit-form-column">
+
+                    <section class="edit-form-section">
+                        <h6>Book Information</h6>
+
+                        <div class="mb-3">
+                            <label asp-for="BookTypeId" class="form-label">
+                                Book Type
+                            </label>
+
+                            <select asp-for="BookTypeId"
+                                    asp-items="ViewBag.BookTypes"
+                                    id="BookTypeId"
+                                    class="form-select modern-input"
+                                    required>
+                                <option value="">Select Book Type</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="BookId" class="form-label">
+                                Book Name
+                            </label>
+
+                            <select asp-for="BookId"
+                                    asp-items="ViewBag.Books"
+                                    id="BookId"
+                                    class="form-select modern-input"
+                                    required>
+                                <option value="">Select Book</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Quantity" class="form-label">
+                                Quantity
+                            </label>
+
+                            <input asp-for="Quantity"
+                                   type="number"
+                                   min="1"
+                                   class="form-control modern-input"
+                                   required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="TransactionType" class="form-label">
+                                Transaction Type
+                            </label>
+
+                            <select asp-for="TransactionType"
+                                    class="form-select modern-input"
+                                    required>
+                                <option value="Borrow">Issue</option>
+                                <option value="Return">Return</option>
+                            </select>
+                        </div>
+                    </section>
+
+                </div>
+
+            </div>
+
+            <div class="edit-form-footer">
+
+                <a asp-action="Index" class="edit-cancel-btn">
+                    Cancel
+                </a>
+
+                <button type="submit" class="edit-update-btn">
+                    Update Transaction
+                </button>
+
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<script>
+    document.getElementById("BookTypeId").addEventListener("change", function () {
+
+        const bookTypeId = this.value;
+        const bookDropdown = document.getElementById("BookId");
+
+        bookDropdown.innerHTML = '<option value="">Select Book</option>';
+
+        if (!bookTypeId) {
+            return;
+        }
+
+        fetch('/Transaction/GetBooksByType?bookTypeId=' + bookTypeId)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Unable to load books.");
+                }
+
+                return response.json();
+            })
+            .then(books => {
+                books.forEach(book => {
+                    const option = document.createElement("option");
+                    option.value = book.bookId;
+                    option.textContent = book.bookName;
+                    bookDropdown.appendChild(option);
+                });
+            })
+            .catch(error => console.error(error));
+    });
+</script>

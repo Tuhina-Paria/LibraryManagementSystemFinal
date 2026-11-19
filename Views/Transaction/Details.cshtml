@@ -1,0 +1,40 @@
+﻿@model LibraryManagementSystem.Models.BookTransaction
+
+<h2>Transaction Details</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Reference Number</th>
+        <td>@Model.ReferenceNo</td>
+    </tr>
+    <tr>
+        <th>Reference Date</th>
+        <td>@Model.ReferenceDate.ToString("dd-MM-yyyy")</td>
+    </tr>
+    <tr>
+        <th>Student Name</th>
+        <td>@Model.StudentName</td>
+    </tr>
+    <tr>
+        <th>Phone Number</th>
+        <td>@Model.PhoneNumber</td>
+    </tr>
+    <tr>
+        <th>Book Type</th>
+        <td>@Model.BookTypeName</td>
+    </tr>
+    <tr>
+        <th>Book Name</th>
+        <td>@Model.BookName</td>
+    </tr>
+    <tr>
+        <th>Quantity</th>
+        <td>@Model.Quantity</td>
+    </tr>
+    <tr>
+        <th>Transaction Type</th>
+        <td>@(Model.TransactionType == "Borrow" ? "Issue" : "Return")</td>
+    </tr>
+</table>
+
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>

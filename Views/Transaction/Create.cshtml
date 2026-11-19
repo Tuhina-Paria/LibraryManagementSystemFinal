@@ -1,0 +1,219 @@
+﻿@model LibraryManagementSystem.Models.BookTransaction
+
+<div class="transaction-page">
+    <div class="mb-4">
+        <h3 class="fw-bold mb-1">New Transaction</h3>
+        <p class="text-muted mb-0">
+            Enter student and book details to issue or return a book.
+        </p>
+    </div>
+
+    <div class="transaction-form-card">
+        <div class="transaction-form-header">
+            <div>
+                <h5 class="mb-1">Transaction Details</h5>
+                <small>Fill in the information below</small>
+            </div>
+            <span class="transaction-header-icon">↗</span>
+        </div>
+
+        <form asp-action="Create" method="post" class="p-4">
+
+            <div asp-validation-summary="All"
+                 class="alert alert-danger"
+                 role="alert">
+            </div>
+
+            <div class="form-section-title">Reference Information</div>
+
+            <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                    <label asp-for="ReferenceNo" class="form-label">
+                        Reference Number
+                    </label>
+                    <input asp-for="ReferenceNo"
+                           class="form-control modern-input"
+                           readonly />
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="ReferenceDate" class="form-label">
+                        Reference Date
+                    </label>
+                    <input asp-for="ReferenceDate"
+                           type="date"
+                           class="form-control modern-input"
+                           readonly />
+                </div>
+            </div>
+
+            <div class="form-section-title">Student Information</div>
+
+            <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                    <label asp-for="StudentId" class="form-label">
+                        Select Student
+                    </label>
+
+                    <select asp-for="StudentId"
+                            asp-items="ViewBag.Students"
+                            id="StudentId"
+                            class="form-select modern-input"
+                            required>
+                        <option value="">Select Student</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-section-title">Book Information</div>
+
+            <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                    <label class="form-label">Book Type</label>
+
+                    <select name="BookTypeId"
+                            id="BookTypeId"
+                            class="form-select modern-input"
+                            required>
+                        <option value="">Select Book Type</option>
+
+                        @if (ViewBag.BookTypes != null)
+                        {
+                            @foreach (var item in ViewBag.BookTypes)
+                            {
+                                <option value="@item.Value">
+                                    @item.Text
+                                </option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="BookId" class="form-label">
+                        Book Name
+                    </label>
+
+                    <select asp-for="BookId"
+                            id="BookId"
+                            class="form-select modern-input"
+                            required>
+                        <option value="">Select Book</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="Quantity" class="form-label">
+                        Quantity
+                    </label>
+
+                    <input asp-for="Quantity"
+                           id="Quantity"
+                           type="number"
+                           class="form-control modern-input"
+                           min="1"
+                           required
+                           placeholder="Enter quantity" />
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="TransactionType" class="form-label">
+                        Transaction Type
+                    </label>
+
+                    <select asp-for="TransactionType"
+                            id="TransactionType"
+                            class="form-select modern-input"
+                            required>
+                        <option value="">Select Type</option>
+                        <option value="Borrow">Issue</option>
+                        <option value="Return">Return</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2 pt-3 border-top">
+                <a asp-action="Index"
+                   class="btn btn-light cancel-btn">
+                    Cancel
+                </a>
+
+                <button type="submit"
+                        class="btn btn-primary save-btn">
+                    Save Transaction
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const bookTypeDropdown = document.getElementById("BookTypeId");
+        const bookDropdown = document.getElementById("BookId");
+        const quantityInput = document.getElementById("Quantity");
+
+        // Load books according to selected Book Type
+        bookTypeDropdown.addEventListener("change", function () {
+
+            const bookTypeId = this.value;
+
+            bookDropdown.innerHTML =
+                '<option value="">Select Book</option>';
+
+            if (!bookTypeId) return;
+
+            fetch('/Transaction/GetBooksByType?bookTypeId=' + bookTypeId)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Unable to load books.");
+                    }
+
+                    return response.json();
+                })
+                .then(books => {
+
+                    books.forEach(book => {
+
+                        const option = document.createElement("option");
+
+                        option.value = book.bookId;
+                        option.textContent = book.bookName;
+
+                        bookDropdown.appendChild(option);
+                    });
+                })
+                .catch(error => alert(error.message));
+        });
+
+        // Validate quantity
+        document.querySelector("form").addEventListener("submit", function (event) {
+
+            const quantity = parseInt(quantityInput.value);
+
+            if (isNaN(quantity) || quantity <= 0) {
+                event.preventDefault();
+                alert("Please enter a valid quantity.");
+            }
+        });
+
+        // Hide validation summary after 3 seconds
+        const errorMessage = document.querySelector(".validation-summary-errors");
+
+        if (errorMessage) {
+
+            setTimeout(function () {
+
+                errorMessage.style.transition = "opacity 0.5s ease";
+                errorMessage.style.opacity = "0";
+
+                setTimeout(function () {
+                    errorMessage.style.display = "none";
+                }, 500);
+
+            }, 3000);
+        }
+
+    });
+</script>

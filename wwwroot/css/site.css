@@ -1,0 +1,563 @@
+
+/* Navigation */
+.navbar {
+    min-height: 65px;
+}
+
+.navbar-brand {
+    font-size: 19px;
+    letter-spacing: -0.3px;
+}
+
+.navbar .nav-link {
+    color: #495057;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 12px !important;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+    .navbar .nav-link:hover {
+        color: #0d6efd;
+        background-color: #f1f5f9;
+    }
+
+/* Main Content */
+main {
+    min-height: 75vh;
+}
+
+/* Footer */
+footer {
+    background-color: #fff;
+}
+
+
+/* Transaction Table */
+.transaction-table {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+    .transaction-table .table {
+        min-width: 750px;
+    }
+
+    .transaction-table thead th {
+        background: #f7f8fa;
+        color: #64748b;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        padding: 16px 14px;
+        border-bottom: 1px solid #e5e7eb;
+        white-space: nowrap;
+    }
+
+    .transaction-table tbody td {
+        padding: 17px 14px;
+        font-size: 13px;
+        color: #374151;
+        border-bottom: 1px solid #edf0f2;
+    }
+
+    .transaction-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    .transaction-table tbody tr:hover {
+        background: #fafbfc;
+    }
+
+.reference-number {
+    font-weight: 600;
+    color: #334155 !important;
+    font-size: 12px !important;
+}
+
+.student-name {
+    font-weight: 500;
+    color: #1f2937 !important;
+}
+
+.quantity-label {
+    display: inline-block;
+    min-width: 28px;
+    text-align: center;
+    padding: 4px 8px;
+    background: #f1f5f9;
+    color: #334155;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.action-link {
+    border: none;
+    background: none;
+    padding: 4px 6px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.view-link {
+    color: #475569;
+}
+
+.edit-link {
+    color: #2563eb;
+}
+
+.delete-link {
+    color: #dc2626;
+}
+
+.action-link:hover {
+    text-decoration: underline;
+}
+
+.empty-table {
+    text-align: center;
+    padding: 45px !important;
+    color: #94a3b8 !important;
+}
+
+/* Modern Student Table */
+
+.student-table-wrapper {
+    background: #ffffff;
+    border: 1px solid #e6eaf0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+}
+
+.student-table-header {
+    background: #172b4d;
+    padding: 22px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .student-table-header h5 {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .student-table-header small {
+        color: #b8c5d8;
+        font-size: 12px;
+    }
+
+.student-count {
+    background: rgba(255,255,255,0.12);
+    color: #ffffff;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.student-table thead th {
+    background: #f5f7fb;
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    padding: 16px 22px;
+    border-bottom: 1px solid #e8edf3;
+    white-space: nowrap;
+}
+
+.student-table tbody td {
+    padding: 18px 22px;
+    color: #475569;
+    font-size: 14px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.student-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.student-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+    .student-table tbody tr:hover {
+        background: #f7f9fd;
+    }
+
+.student-id {
+    display: inline-block;
+    background: #edf2ff;
+    color: #3659a5;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.student-name {
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.student-action {
+    display: inline-block;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.edit-action {
+    color: #2563eb;
+}
+
+.delete-action {
+    color: #dc2626;
+}
+
+.edit-action:hover {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+}
+
+.delete-action:hover {
+    background: #fef2f2;
+    border-color: #fecaca;
+}
+
+.add-student-btn {
+    border-radius: 7px;
+    font-weight: 500;
+    padding: 9px 16px;
+}
+
+/* Modern Transaction Form */
+
+.transaction-form-card {
+    background: #ffffff;
+    border: 1px solid #e5eaf1;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.05);
+}
+
+.transaction-form-header {
+    background: #172b4d;
+    color: #ffffff;
+    padding: 22px 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .transaction-form-header h5 {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .transaction-form-header small {
+        color: #b8c5d8;
+        font-size: 12px;
+    }
+
+.transaction-header-icon {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.12);
+    border-radius: 9px;
+    font-size: 20px;
+}
+
+.form-section-title {
+    color: #334155;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.transaction-form-card .form-label {
+    color: #475569;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.modern-input {
+    min-height: 43px;
+    border: 1px solid #dce2ea;
+    border-radius: 7px;
+    font-size: 13px;
+    color: #334155;
+    background-color: #ffffff;
+}
+
+    .modern-input:focus {
+        border-color: #7299e8;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.09);
+    }
+
+    .modern-input[readonly] {
+        background: #f5f7fa;
+        color: #64748b;
+    }
+
+.save-btn {
+    padding: 9px 20px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.cancel-btn {
+    padding: 9px 18px;
+    border: 1px solid #e2e8f0;
+    border-radius: 7px;
+    font-size: 13px;
+    color: #475569;
+}
+
+
+/* Edit Transaction Layout */
+
+.edit-transaction-page {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.edit-page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 15px;
+}
+
+    .edit-page-heading h3 {
+        color: #172b4d;
+        font-size: 27px;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    .edit-page-heading p {
+        color: #7b8798;
+        font-size: 14px;
+        margin: 0;
+    }
+
+.edit-back-link {
+    color: #2463c5;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+    .edit-back-link:hover {
+        text-decoration: underline;
+    }
+
+.edit-transaction-card {
+    background: #fff;
+    border: 1px solid #e7ecf3;
+    border-radius: 13px;
+    overflow: hidden;
+    box-shadow: 0 8px 28px rgba(20, 40, 75, 0.06);
+}
+
+.edit-card-heading {
+    background: #172b4d;
+    color: white;
+    padding: 22px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .edit-card-heading h5 {
+        font-size: 17px;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+
+    .edit-card-heading p {
+        color: #cbd5e1;
+        font-size: 13px;
+        margin: 0;
+    }
+
+.edit-card-icon {
+    background: rgba(255,255,255,0.14);
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    font-size: 20px;
+}
+
+.edit-card-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.edit-form-column {
+    padding: 28px;
+}
+
+    .edit-form-column + .edit-form-column {
+        border-left: 1px solid #edf0f5;
+    }
+
+.edit-form-section h6 {
+    color: #243b5a;
+    font-size: 14px;
+    font-weight: 700;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e9edf3;
+}
+
+.edit-form-section + .edit-form-section {
+    margin-top: 32px;
+}
+
+.edit-transaction-page .form-label {
+    color: #34445c;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.edit-transaction-page .modern-input {
+    min-height: 44px;
+    border: 1px solid #dce3ed;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+    .edit-transaction-page .modern-input:focus {
+        border-color: #3769bd;
+        box-shadow: 0 0 0 3px rgba(55, 105, 189, 0.12);
+    }
+
+    .edit-transaction-page .modern-input[readonly] {
+        background: #f4f6f9;
+        color: #64748b;
+    }
+
+.edit-form-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 20px 28px;
+    border-top: 1px solid #edf0f5;
+    background: #fafbfd;
+}
+
+.edit-cancel-btn,
+.edit-update-btn {
+    padding: 10px 20px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+}
+
+.edit-cancel-btn {
+    color: #475569;
+    border: 1px solid #dce3ed;
+    background: white;
+}
+
+    .edit-cancel-btn:hover {
+        background: #f1f5f9;
+        color: #334155;
+    }
+
+.edit-update-btn {
+    color: white;
+    background: #2463c5;
+    border: none;
+}
+
+    .edit-update-btn:hover {
+        background: #174d9f;
+    }
+
+@media (max-width: 768px) {
+    .edit-card-body {
+        grid-template-columns: 1fr;
+    }
+
+    .edit-form-column + .edit-form-column {
+        border-left: none;
+        border-top: 1px solid #edf0f5;
+    }
+}
+
+@media (max-width: 576px) {
+    .edit-transaction-page {
+        margin: 25px auto;
+        padding: 0 12px;
+    }
+
+    .edit-page-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+        .edit-page-heading h3 {
+            font-size: 23px;
+        }
+
+    .edit-form-column {
+        padding: 20px;
+    }
+
+    .edit-form-footer {
+        padding: 16px 20px;
+    }
+}
+
+/* Transaction Validation Summary */
+
+.validation-summary-valid {
+    display: none !important;
+}
+
+.validation-summary-errors {
+    display: block;
+    background: #fff0f0;
+    color: #b42318;
+    border: 1px solid #f5c2c7;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 0 28px 20px;
+    font-size: 13px;
+}
+
+    .validation-summary-errors ul {
+        margin-bottom: 0;
+    }

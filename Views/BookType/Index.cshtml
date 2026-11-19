@@ -1,0 +1,96 @@
+﻿@model List<LibraryManagementSystem.Models.BookType>
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["Error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold mb-1">Book Type Management</h3>
+        <p class="text-muted mb-0">Organize and manage book categories</p>
+    </div>
+
+    <a asp-action="Create" class="btn btn-primary add-student-btn">
+        + Add Book Type
+    </a>
+</div>
+
+<div class="student-table-wrapper">
+    <div class="student-table-header">
+        <div>
+            <h5 class="mb-1 text-white">Book Type Records</h5>
+            <small>All available book categories</small>
+        </div>
+
+        <span class="student-count">
+            @(Model?.Count ?? 0) Categories
+        </span>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table student-table mb-0">
+            <thead>
+                <tr>
+                    <th>BOOK TYPE ID</th>
+                    <th>BOOK TYPE NAME</th>
+                    <th class="text-end">ACTIONS</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (Model != null && Model.Count > 0)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <span class="student-id">#@item.BookTypeId</span>
+                            </td>
+
+                            <td>
+                                <span class="student-name">@item.BookTypeName</span>
+                            </td>
+
+                            <td class="text-end text-nowrap">
+                                <a asp-action="Edit"
+                                   asp-route-id="@item.BookTypeId"
+                                   class="student-action edit-action">
+                                    Edit
+                                </a>
+
+                                <form asp-action="Delete" method="post" class="d-inline">
+                                    <input type="hidden" name="id" value="@item.BookTypeId" />
+
+                                    <button type="submit"
+                                            class="student-action delete-action"
+                                            onclick="return confirm('Are you sure you want to delete this book type?')">
+                                        Delete
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3" class="text-center py-5 text-muted">
+                            No book types found.
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

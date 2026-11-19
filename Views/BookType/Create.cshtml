@@ -1,0 +1,32 @@
+﻿@model LibraryManagementSystem.Models.BookType
+
+@{
+    ViewData["Title"] = "Add Book Type";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header">
+            <h4>Add New Book Type</h4>
+        </div>
+
+        <div class="card-body">
+            <form asp-action="Create" method="post">
+
+                <div class="mb-3">
+                    <label asp-for="BookTypeName" class="form-label">Book Type Name</label>
+                    <input asp-for="BookTypeName" class="form-control" maxlength="100" />
+                    <span asp-validation-for="BookTypeName" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

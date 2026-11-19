@@ -1,0 +1,35 @@
+﻿@model LibraryManagementSystem.Models.Book
+
+@{
+    ViewData["Title"] = "Book Details";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header">
+            <h4>Book Details</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4">Book ID</dt>
+                <dd class="col-sm-8">@Model.BookId</dd>
+
+                <dt class="col-sm-4">Book Name</dt>
+                <dd class="col-sm-8">@Model.BookName</dd>
+
+                <dt class="col-sm-4">Book Type</dt>
+                <dd class="col-sm-8">@Model.BookTypeName</dd>
+
+                <dt class="col-sm-4">Total Quantity</dt>
+                <dd class="col-sm-8">@Model.TotalQuantity</dd>
+
+                <dt class="col-sm-4">Available Quantity</dt>
+                <dd class="col-sm-8">@Model.AvailableQuantity</dd>
+            </dl>
+
+            <a asp-action="Edit" asp-route-id="@Model.BookId"
+               class="btn btn-warning">Edit</a>
+            <a asp-action="Index" class="btn btn-secondary">Back</a>
+        </div>
+    </div>
+</div>

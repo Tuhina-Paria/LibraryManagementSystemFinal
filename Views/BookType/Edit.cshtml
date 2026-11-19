@@ -1,0 +1,34 @@
+﻿@model LibraryManagementSystem.Models.BookType
+
+@{
+    ViewData["Title"] = "Edit Book Type";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header">
+            <h4>Edit Book Type</h4>
+        </div>
+
+        <div class="card-body">
+            <form asp-action="Edit" method="post">
+
+                <input type="hidden" asp-for="BookTypeId" />
+
+                <div class="mb-3">
+                    <label asp-for="BookTypeName" class="form-label">Book Type Name</label>
+                    <input asp-for="BookTypeName" class="form-control" maxlength="100" />
+                    <span asp-validation-for="BookTypeName" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
